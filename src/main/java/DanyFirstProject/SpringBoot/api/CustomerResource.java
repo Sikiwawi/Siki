@@ -3,12 +3,7 @@ package DanyFirstProject.SpringBoot.api;
 import DanyFirstProject.SpringBoot.model.Customer;
 import DanyFirstProject.SpringBoot.model.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/customers")
@@ -21,7 +16,7 @@ public class CustomerResource {
     }
 
     @GetMapping
-   public List<Customer> getCustomers(){
+   public Iterable<Customer> getCustomers(){
         return customerService.getCustomers();
     }
 
@@ -32,7 +27,7 @@ public class CustomerResource {
 
     @PostMapping(value="/{customerId}")
     public Customer updateCustomer(@PathVariable("customerId") int customerId, @RequestBody Customer customer){
-     return  customerService.updateCustomer(customerId,customer);
+     return  customerService.updateCustomer(customer);
     }
 
     @DeleteMapping
