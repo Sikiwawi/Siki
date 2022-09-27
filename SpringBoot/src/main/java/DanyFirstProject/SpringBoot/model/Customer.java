@@ -3,12 +3,22 @@ package DanyFirstProject.SpringBoot.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Customer {
     @JsonProperty("id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerId;
+    @JsonProperty("FirstName")
     private String customerFirstName;
+    @JsonProperty("LastName")
     private String customerLastName;
+    @JsonProperty("Email")
     private String customerEmail;
 
     public int getCustomerId() {
@@ -19,21 +29,21 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public String getCustomerFirstname() {
+    public String getCustomerFirstName() {
         return customerFirstName;
     }
 
-    public void setCustomerFirstname(String customerFirstname) {
-        this.customerFirstName = customerFirstname;
+    public void setCustomerFirstName(String customerFirstName) {
+        this.customerFirstName = customerFirstName;
     }
 
 
-    public String getCustomerLastname() {
+    public String getCustomerLastName() {
         return customerLastName;
     }
 
-    public void setCustomerLastname(String customerLastname) {
-        this.customerLastName = customerLastname;
+    public void setCustomerLastName(String customerLastName) {
+        this.customerLastName = customerLastName;
     }
 
     public String getCustomerEmail() {
